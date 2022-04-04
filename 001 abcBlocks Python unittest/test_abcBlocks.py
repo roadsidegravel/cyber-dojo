@@ -1,13 +1,6 @@
 from abcBlocks import *
 import unittest
-
-
-class TestabcBlocks(unittest.TestCase):
-    def test_we_have_twenty_blocks(self):
-        desired = 20
-        result = len(allBlocks)
-        self.assertEqual(desired, result)
-        
+      
         
 class TestCheckBlockForLetter(unittest.TestCase):
     def test_is_not_on_block(self):
@@ -102,6 +95,14 @@ class TestCheckCanMakeWord(unittest.TestCase):
         desired = True
         result = check_can_make_word(word)
         self.assertEqual(desired, result)
+        
+    def test_allBlocks_unchanged(self):
+        allBlocksCopy = allBlocks.copy()
+        discard = check_can_make_word('A')
+        discard = check_can_make_word('COMMON')
+        discard = check_can_make_word('CONFUSE')
+        self.assertEqual(allBlocksCopy, allBlocks)
+        
 
 
 if __name__ == '__main__':
